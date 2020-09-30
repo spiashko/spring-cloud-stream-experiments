@@ -14,10 +14,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.spaishko</groupId>
-    <artifactId>string-cloud-stream-kafka</artifactId>
+    <artifactId>spring-cloud-stream-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>string-cloud-stream-kafka</name>
-    <description>Demo project for Spring Boot with spring cloud stream kafka</description>
+    <name>spring-cloud-stream-demo</name>
+    <description>Demo project for Spring Boot with spring cloud stream</description>
 
     <properties>
         <java.version>14</java.version>

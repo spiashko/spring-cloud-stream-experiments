@@ -1,0 +1,34 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="siarhei.piashko" id="changelog-001-message">
+        <sql>
+            create table message (
+            uuid UUID PRIMARY KEY,
+
+            value TEXT UNIQUE NOT NULL
+            );
+        </sql>
+        <rollback>
+            drop table message;
+        </rollback>
+    </changeSet>
+
+    <changeSet author="siarhei.piashko" id="changelog-002-event">
+        <sql>
+            create table INT_METADATA_STORE (
+            METADATA_KEY TEXT NOT NULL,
+            METADATA_VALUE TEXT,
+            REGION TEXT NOT NULL,
+            PRIMARY KEY(METADATA_KEY, REGION)
+            );
+        </sql>
+        <rollback>
+            drop table INT_METADATA_STORE;
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
