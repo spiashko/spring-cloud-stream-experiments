@@ -15,7 +15,7 @@ public class OperationController {
 
 
     @GetMapping("/produce")
-    public String produce(@RequestParam(name = "count", required = false, defaultValue = "50") Integer count) {
+    public String produce(@RequestParam(name = "count", required = false, defaultValue = "1") Integer count) {
 
         for (int i = 0; i < count; i++) {
             publisherService.queue();

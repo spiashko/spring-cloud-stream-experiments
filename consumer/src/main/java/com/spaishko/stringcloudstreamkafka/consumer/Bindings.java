@@ -7,7 +7,12 @@ public interface Bindings {
 
     String INPUT = "myinput";
 
+    String DL_INPUT = "mydlinput";
+
     @Input(Bindings.INPUT)
     SubscribableChannel input();
+
+    @Input(Bindings.DL_INPUT)
+    SubscribableChannel dlinput();
 
 }
