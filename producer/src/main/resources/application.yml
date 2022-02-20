@@ -1,6 +1,13 @@
 spring:
   application:
     name: producer-app
+  kafka:
+    properties:
+      sasl:
+        jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="alice" password="alice-secret";
+        mechanism: PLAIN
+      security:
+        protocol: SASL_PLAINTEXT
   cloud:
     stream:
       source: myoutput
