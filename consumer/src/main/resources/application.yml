@@ -1,0 +1,48 @@
+logging:
+  level:
+    org.springframework.kafka.listener: debug
+
+server:
+  port: 8081
+
+spring:
+  application:
+    name: consumer-app
+  cloud:
+    stream:
+      bindings:
+        default:
+          consumer:
+            headerMode: headers
+        dataConsumer-in-0:
+          destination: mytopic
+          group: ${spring.application.name}
+      kafka:
+        binder:
+          brokers: localhost:9092
+        bindings:
+          dataConsumer-in-0:
+            consumer:
+              enable-dlq: true
+              trustedPackages: "*"
+  datasource:
+    hikari:
+      auto-commit: false
+      poolName: Hikari
+    username: demo_user
+    password: demo_pass
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/demo_db
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate.temp.use_jdbc_metadata_defaults: false
+      hibernate.dialect: org.hibernate.dialect.PostgreSQL10Dialect
+      hibernate.jdbc.time_zone: UTC
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_query_cache: false
+  liquibase:
+    change-log: classpath:liquibase/master.xml
+  mvc:
+    servlet:
+      load-on-startup: 1

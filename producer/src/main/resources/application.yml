@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: producer-app
+  cloud:
+    stream:
+      source: myoutput
+      bindings:
+        default:
+          producer:
+            headerMode: headers
+        myoutput-out-0:
+          destination: mytopic
+          group: ${spring.application.name}
+      kafka:
+        binder:
+          brokers: localhost:9092
